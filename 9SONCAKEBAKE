@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nine Suns Bakery Shop</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#fff8f0;
+}
+
+header {
+  background:#ff914d;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+.container {
+  padding:20px;
+}
+
+h2 {
+  color:#333;
+}
+
+.products {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+button {
+  background:#ff914d;
+  color:white;
+  border:none;
+  padding:10px;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+.cart {
+  position:fixed;
+  right:10px;
+  top:10px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  width:250px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input, select {
+  width:100%;
+  padding:8px;
+  margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍰 Nine Suns Bakery Shop</h1>
+  <p>Serving delicious cakes & pastries for 15+ years</p>
+</header>
+
+<div class="container">
+
+<h2>Our Cakes (₹350 - ₹1200)</h2>
+<div class="products">
+
+<div class="card">
+  <h3>Chocolate Cake</h3>
+  <p>₹500</p>
+  <button onclick="addToCart('Chocolate Cake',500)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <h3>Strawberry Cake</h3>
+  <p>₹700</p>
+  <button onclick="addToCart('Strawberry Cake',700)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <h3>Custom Cake</h3>
+  <p>₹1200</p>
+  <button onclick="addToCart('Custom Cake',1200)">Add to Cart</button>
+</div>
+
+</div>
+
+<h2>Pastries (₹50 - ₹250)</h2>
+<div class="products">
+
+<div class="card">
+  <h3>Chocolate Pastry</h3>
+  <p>₹80</p>
+  <button onclick="addToCart('Chocolate Pastry',80)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <h3>Vanilla Pastry</h3>
+  <p>₹60</p>
+  <button onclick="addToCart('Vanilla Pastry',60)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <h3>Fruit Pastry</h3>
+  <p>₹120</p>
+  <button onclick="addToCart('Fruit Pastry',120)">Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="cart">
+  <h3>🛒 Cart</h3>
+  <ul id="cartItems"></ul>
+  <p><b>Total: ₹<span id="total">0</span></b></p>
+
+  <h4>Customer Details</h4>
+  <input type="text" placeholder="Name">
+  <input type="text" placeholder="Phone">
+
+  <h4>Payment Method</h4>
+  <select>
+    <option>Google Pay</option>
+    <option>PhonePe</option>
+    <option>Paytm</option>
+    <option>Cash on Delivery</option>
+  </select>
+
+  <button onclick="checkout()">Place Order</button>
+</div>
+
+<script>
+let total = 0;
+
+function addToCart(name, price) {
+  let li = document.createElement("li");
+  li.innerText = name + " - ₹" + price;
+  document.getElementById("cartItems").appendChild(li);
+  total += price;
+  document.getElementById("total").innerText = total;
+}
+
+function checkout() {
+  alert("Order placed successfully! Total: ₹" + total);
+}
+</script>
+
+</body>
+</html>
